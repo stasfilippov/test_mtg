@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pageNumber {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  background-color: white;
+  color: #007bff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+}
+
+.active {
+  background-color: #007bff;
+  color: white;
+}
+
+span {
+  margin: 0 5px;
+  padding: 5px 10px;
+  color: #007bff;
+}

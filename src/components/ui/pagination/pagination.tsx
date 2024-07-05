@@ -1,6 +1,6 @@
 import { Component } from 'react'
 
-import s from './paginations.module.scss'
+import s from './pagination.module.scss'
 
 interface PaginationProps {
   itemsPerPage: number

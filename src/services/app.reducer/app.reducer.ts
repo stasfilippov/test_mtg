@@ -19,6 +19,7 @@ export const appReducer = (
     case 'SET_CLIENTS':
       return {
         ...state,
+        clients: action.clients,
       }
     default:
       return state
@@ -31,9 +32,7 @@ export const setClients = (clients: Client[]) => ({ clients, type: SET_CLIENTS }
 export const getClients =
   (lang: string): AppThunk =>
   (dispatch: AppDispatch) => {
-    const res = clientsApi.getClients(lang)
-
-    dispatch(setClients(res))
+    clientsApi.getClients(lang).then(data => dispatch(setClients(data)))
   }
 
 type SetClients = ReturnType<typeof setClients>

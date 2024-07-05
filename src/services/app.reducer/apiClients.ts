@@ -1,12 +1,10 @@
+import axios from 'axios'
+
+import { convertResponse } from '../utils/convertResponse'
+
 export const clientsApi = {
-  getClients(lang: string) {
-    const res = fetch(`http://localhost:3000/${lang}`, { method: 'GET' })
-
-    res.then(res => {
-      console.log('res', res)
-
-      return res
-    })
+  getClients<GetClientsResponse>(lang: string) {
+    return axios.get(`http://localhost:3000/${lang}`).then(res => convertResponse(res.data))
   },
 }
 

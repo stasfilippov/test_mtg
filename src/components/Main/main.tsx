@@ -14,11 +14,11 @@ type MainProps = {
 export class Main extends Component<MainProps, {}> {
   render() {
     return (
-      <div className={s.container}>
+      <main className={s.container}>
         {this.props.clients.map(client => {
           return <Card client={client} key={client.id} />
         })}
-      </div>
+      </main>
     )
   }
 }

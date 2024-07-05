@@ -1,22 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { setLanguage } from '@/services/app-reducer/app-reducer'
+import { AppRootState } from '@/services/store'
 
 import s from './dropDown.module.scss'
 
-interface DropdownProps {
-  options: string[]
-}
-
 interface DropdownState {
   isOpen: boolean
-  selectedOption: string
 }
 
-export class DropDown extends React.Component<DropdownProps, DropdownState> {
+class DropDown extends React.Component<DropDownProps, DropdownState> {
   selectOption = (option: string) => {
     this.setState({
       isOpen: false,
-      selectedOption: option,
     })
+    this.props.setLanguage(option)
   }
 
   toggleDropdown = () => {
@@ -25,23 +24,22 @@ export class DropDown extends React.Component<DropdownProps, DropdownState> {
     }))
   }
 
-  constructor(props: DropdownProps) {
+  constructor(props: DropDownProps) {
     super(props)
 
     this.state = {
       isOpen: false,
-      selectedOption: 'Ru',
     }
   }
 
   render() {
-    const { isOpen, selectedOption } = this.state
+    const { isOpen } = this.state
     const { options } = this.props
 
     return (
       <div className={s.dropdown}>
         <button className={s.dropdownToggle} onClick={this.toggleDropdown} type={'button'}>
-          {selectedOption ? selectedOption : 'Select an option'}
+          {this.props.language ? this.props.language : 'Select an option'}
         </button>
         {isOpen && (
           <div className={s.dropdownMenu}>
@@ -60,3 +58,27 @@ export class DropDown extends React.Component<DropdownProps, DropdownState> {
     )
   }
 }
+
+type MapStateToPropsType = {
+  language: string
+  options: string[]
+}
+
+const mapStateToProps = (
+  state: AppRootState,
+  ownProps: { options: string[] }
+): MapStateToPropsType => {
+  const { language } = state.app
+
+  const { options } = ownProps
+
+  return { language, options }
+}
+
+type MapDispatchToPropsType = {
+  setLanguage: (lang: string) => void
+}
+
+export type DropDownProps = MapDispatchToPropsType & MapStateToPropsType
+
+export const DropDownContainer = connect(mapStateToProps, { setLanguage })(DropDown)

@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Header } from './components/Header/headerContainerApi'
+import { Header } from './components/Header/header'
 import { Main } from './components/Main/main'
 import Pagination from './components/ui/pagination/paginations'
 import { getClients } from './services/app-reducer/app-reducer'
@@ -28,12 +28,16 @@ class App extends Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    this.props.getClients('ru')
+    this.props.getClients(this.props.lang)
   }
 
   componentDidUpdate(prevProps: Readonly<AppProps>) {
     if (this.props.clients !== prevProps.clients) {
       this.handlePageChange()
+    }
+
+    if (this.props.lang !== prevProps.lang) {
+      this.props.getClients(this.props.lang)
     }
   }
 
@@ -41,7 +45,7 @@ class App extends Component<AppProps, AppState> {
     const { currentPageItems } = this.state
 
     return (
-      <div>
+      <>
         <Header />
         <Main clients={currentPageItems} />
         <Pagination
@@ -49,18 +53,20 @@ class App extends Component<AppProps, AppState> {
           onPageChange={this.handlePageChange}
           totalItems={this.props.clients.length}
         />
-      </div>
+      </>
     )
   }
 }
 
 type MapStateToPropsType = {
   clients: Client[]
+  lang: string
 }
 
 const mapStateToProps = (state: AppRootState): MapStateToPropsType => {
   return {
     clients: state.app.clients,
+    lang: state.app.language,
   }
 }
 

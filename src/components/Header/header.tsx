@@ -4,9 +4,9 @@ import st from './header.module.scss'
 
 import icon from '../../assets/icon.png'
 import { Clock } from '../ui/clock/clock'
-import { DropDown } from '../ui/dropdown/dropDown'
+import { DropDownContainer } from '../ui/dropdown/dropDown'
 
-const options: string[] = ['Eng', 'Ru']
+const options: string[] = ['en', 'ru']
 
 export class Header extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export class Header extends React.Component {
         <img alt={'header icon'} src={icon} style={{ width: '50px' }} />
         <div className={st.info}>
           <Clock />
-          <DropDown options={options} />
+          <DropDownContainer options={options} />
         </div>
       </header>
     )

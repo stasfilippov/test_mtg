@@ -2,8 +2,10 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { Header } from './components/Header/headerContainerApi'
+import { Main } from './components/Main/main'
 import Pagination from './components/ui/pagination/paginations'
-import { Client, getClients } from './services/app.reducer/app.reducer'
+import { getClients } from './services/app-reducer/app-reducer'
+import { Client } from './services/app-reducer/types'
 import { AppRootState } from './services/store'
 
 interface AppState {
@@ -26,13 +28,10 @@ class App extends Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    console.log('DID MOUNT')
     this.props.getClients('ru')
   }
 
   componentDidUpdate(prevProps: Readonly<AppProps>) {
-    console.log('DID UPDATE')
-
     if (this.props.clients !== prevProps.clients) {
       this.handlePageChange()
     }
@@ -41,18 +40,10 @@ class App extends Component<AppProps, AppState> {
   render() {
     const { currentPageItems } = this.state
 
-    console.log('currentPageItems', this.state.currentPageItems)
-
-    console.log('clients', this.props.clients)
-
     return (
       <div>
         <Header />
-        <ul>
-          {currentPageItems.map((item, index) => (
-            <li key={index}>{item.name}</li>
-          ))}
-        </ul>
+        <Main clients={currentPageItems} />
         <Pagination
           itemsPerPage={10}
           onPageChange={this.handlePageChange}

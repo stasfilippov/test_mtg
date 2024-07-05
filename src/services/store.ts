@@ -1,7 +1,7 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { ThunkAction, ThunkDispatch, thunk } from 'redux-thunk'
 
-import { AppUnionActionDispatchType, appReducer } from './app.reducer/app.reducer'
+import { AppUnionActionDispatchType, appReducer } from './app-reducer/app-reducer'
 
 const rootReducer = combineReducers({
   app: appReducer,

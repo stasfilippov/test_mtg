@@ -1,6 +1,5 @@
+import { convertResponse } from '@/utils/convertResponse'
 import axios from 'axios'
-
-import { convertResponse } from '../utils/convertResponse'
 
 export const clientsApi = {
   getClients<GetClientsResponse>(lang: string) {

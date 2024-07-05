@@ -1,7 +1,24 @@
 import { Component } from 'react'
 
-export default class Main extends Component {
+// eslint-disable-next-line import/no-unresolved
+import { Client } from '@/services/app-reducer/types'
+
+import s from './main.module.scss'
+
+import { Card } from '../ui/card/card'
+
+type MainProps = {
+  clients: Client[]
+}
+
+export class Main extends Component<MainProps, {}> {
   render() {
-    return <div>main</div>
+    return (
+      <div className={s.container}>
+        {this.props.clients.map(client => {
+          return <Card client={client} key={client.id} />
+        })}
+      </div>
+    )
   }
 }

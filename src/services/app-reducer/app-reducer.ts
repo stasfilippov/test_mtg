@@ -1,9 +1,8 @@
 import { AppDispatch, AppThunk } from '../store'
-import { ClientResponse, clientsApi } from './apiClients'
+import { clientsApi } from './apiClients'
+import { Client } from './types'
 
 const SET_CLIENTS = 'SET_CLIENTS'
-
-export type Client = { id: number } & ClientResponse
 
 const initialState = {
   clients: [] as Client[],

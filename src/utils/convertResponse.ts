@@ -1,5 +1,5 @@
-import { GetClientsResponse } from '../app.reducer/apiClients'
-import { Client } from '../app.reducer/app.reducer'
+import { GetClientsResponse } from '../app-reducer/apiClients'
+import { Client } from '../app-reducer/app.reducer'
 
 export const convertResponse = (data: GetClientsResponse) => {
   const clients = [] as Client[]

@@ -5,7 +5,7 @@ import { Client } from '@/services/app-reducer/types'
 
 import s from './main.module.scss'
 
-import { Card } from '../ui/card/card'
+import { Card } from '../ui'
 
 type MainProps = {
   clients: Client[]

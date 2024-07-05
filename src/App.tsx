@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { Header } from './components/Header/header'
-import { Main } from './components/Main/main'
-import Pagination from './components/ui/pagination/paginations'
+import { Header } from './components/Header'
+import { Main } from './components/Main'
+import { Pagination } from './components/ui'
 import { getClients } from './services/app-reducer/app-reducer'
 import { Client } from './services/app-reducer/types'
 import { AppRootState } from './services/store'

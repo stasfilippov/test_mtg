@@ -12,7 +12,7 @@ interface PaginationState {
   currentPage: number
 }
 
-class Pagination extends Component<PaginationProps, PaginationState> {
+export class Pagination extends Component<PaginationProps, PaginationState> {
   handleClick = (pageNumber: number) => {
     this.setState({ currentPage: pageNumber })
     this.props.onPageChange(pageNumber)
@@ -142,5 +142,3 @@ class Pagination extends Component<PaginationProps, PaginationState> {
     return <div className={s.pagination}>{this.renderPageNumbers()}</div>
   }
 }
-
-export default Pagination

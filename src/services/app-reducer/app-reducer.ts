@@ -1,5 +1,5 @@
 import { AppDispatch, AppThunk } from '../store'
-import { clientsApi } from './apiClients'
+import { clientsApi } from './api-clients'
 import { Client } from './types'
 
 const SET_CLIENTS = 'SET_CLIENTS'
